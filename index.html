@@ -10,7 +10,7 @@
         h1 { color: #333; font-size: 1.4rem; margin: 15px 0; }
         .buttons { margin-top: 25px; position: relative; height: 120px; width: 100%; }
         button { padding: 12px 28px; font-size: 1.1rem; border-radius: 12px; border: none; cursor: pointer; position: absolute; left: 50%; transform: translateX(-50%); font-weight: bold; }
-        #yesBtn { background-color: #ff4b81; color: white; top: 0; }
+        #yesBtn { background-color: #ff4b81; color: white; top: 0; z-index: 100; }
         #noBtn { background-color: #e0e0e0; color: #666; top: 65px; transition: 0.15s; }
         .hidden { display: none; }
         img { width: 100%; max-width: 180px; border-radius: 15px; }
@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="container" id="mainCard">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp6NjB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/3ohzdIuqJoo8QdK6Ag/giphy.gif">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp6NjB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/3ohzdIuqJoo8QdK6Ag/giphy.gif" alt="Asking cat">
         <h1>Pratima Tirkey, will you be my Valentine?</h1>
         <div class="buttons">
             <button id="yesBtn">Yes</button>
@@ -30,7 +30,7 @@
 
     <div class="container hidden" id="successMessage">
         <h1>YAY! ❤️</h1>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHp6NjB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/K77YQudvP9o9H1Vf8D/giphy.gif">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHp6NjB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6ZzB6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/K77YQudvP9o9H1Vf8D/giphy.gif" alt="Happy dance">
         <p>I LOVE YOU! ❤️<br>You made my day, Pratima!</p>
     </div>
 
@@ -41,7 +41,6 @@
         const successMessage = document.getElementById('successMessage');
 
         function moveButton() {
-            // Keeps button within screen bounds
             const x = Math.random() * (window.innerWidth - 100);
             const y = Math.random() * (window.innerHeight - 50);
             noBtn.style.position = 'fixed';
@@ -49,10 +48,9 @@
             noBtn.style.top = y + 'px';
         }
 
-        // Works for both computer mouse and phone touch
         noBtn.addEventListener('mouseover', moveButton);
         noBtn.addEventListener('touchstart', (e) => {
-            e.preventDefault();
+            e.preventDefault(); // Prevents the screen from jumping on mobile
             moveButton();
         });
 
